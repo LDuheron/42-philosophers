@@ -28,7 +28,6 @@ static bool	is_whitespace(char c)
 		|| c == '\f' || c == '\r');
 }
 
-
 static bool	is_overflow(long nbr)
 {
 	if (nbr > INT_MAX / 10)

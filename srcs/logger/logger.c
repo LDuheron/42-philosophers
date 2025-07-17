@@ -47,7 +47,7 @@ void	log_error(enum e_error code)
 	[USAGE] = "Usage is ./philo nb_philosophers \
 time_to_die time_to_eat time_to_sleep \
 [meal_limit]\n",
-	[OVERFLOW] = "error: overflow",
+	[OVERFLOW] = "error: overflow\n",
 	};
 
 	ft_putstr_fd(message[code], STD_ERR);
