@@ -41,14 +41,14 @@ static	void	ft_putstr_fd(const char *str, int fd)
 // 	ft_putstr_fd(message[CODE], STD_OUT);
 // }
 
-void	log_error(enum e_error CODE)
+void	log_error(enum e_error code)
 {
 	static const char	*message[NB_ERROR] = {
 	[USAGE] = "Usage is ./philo nb_philosophers \
-		time_to_die time_to_eat time_to_sleep \
-		[nb_times_each_philosopher_must_eat]\n",
+time_to_die time_to_eat time_to_sleep \
+[meal_limit]\n",
 	[OVERFLOW] = "error: overflow",
 	};
 
-	ft_putstr_fd(message[CODE], STD_ERR);
+	ft_putstr_fd(message[code], STD_ERR);
 }

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lduheron <lduheron@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-07-17 17:15:44 by lduheron          #+#    #+#             */
+/*   Updated: 2025-07-17 17:15:44 by lduheron         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
@@ -16,6 +27,8 @@
 # define STD_OUT 1
 # define STD_ERR 2
 
+# define INT_MAX 2147483647
+
 enum e_error {
 	OVERFLOW,
 	USAGE,
@@ -33,11 +46,11 @@ enum e_status {
 };
 
 typedef struct s_config {
-	int		nb_philosophers;
-	int		nb_times_each_philosopher_must_eat;
 	long	time_to_die;
 	long	time_to_eat;
 	long	time_to_sleep;
+	int		nb_philosophers;
+	int		meal_limit;
 }	t_config;
 
 typedef struct s_shared {
@@ -48,8 +61,9 @@ typedef struct s_shared {
 int		main(int argc, char **argv);
 bool	parsing(size_t size_table, char **input_table);
 
-void	log_error(enum e_error CODE);
+void	log_error(enum e_error code);
 
 bool	initialisation(t_shared *shared, char **input_table, bool meal_limit);
+int		ft_atoi(const char *str);
 
 #endif

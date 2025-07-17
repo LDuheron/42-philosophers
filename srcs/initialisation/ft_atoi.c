@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "philosophers.h"
 
 static bool	is_digit(char input)
 {
@@ -24,12 +24,12 @@ static bool	is_sign(char c)
 
 static bool	is_whitespace(char c)
 {
-	return (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r');
+	return (c == ' ' || c == '\n' || c == '\t' || c == '\v'
+		|| c == '\f' || c == '\r');
 }
 
 
-static bool	is_overflow(long number)
+static bool	is_overflow(long nbr)
 {
 	if (nbr > INT_MAX / 10)
 	{
@@ -39,7 +39,7 @@ static bool	is_overflow(long number)
 	return (false);
 }
 
-static int	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long	nbr;
 	int		i;
@@ -59,7 +59,7 @@ static int	ft_atoi(const char *str)
 	while (is_digit(str[i]))
 	{
 		if (is_overflow(nbr))
-			return (false); // change error code
+			return (IS_OVERFLOW);
 		nbr = nbr * 10 + str[i] - 48;
 		i++;
 	}

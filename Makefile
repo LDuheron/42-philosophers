@@ -8,6 +8,8 @@ SRC_DIR     := srcs
 OBJ_DIR     := obj
 SRCS        := \
 	main.c								\
+	./initialisation/ft_atoi.c   \
+	./initialisation/initialisation.c   \
 	./logger/logger.c 					\
 	./parsing/parsing.c 				\
 

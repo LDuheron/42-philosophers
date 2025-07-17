@@ -1,4 +1,17 @@
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initialisation.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lduheron <lduheron@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-07-17 17:11:22 by lduheron          #+#    #+#             */
+/*   Updated: 2025-07-17 17:11:22 by lduheron         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "philosophers.h"
 
 // bool	allocation()
 // {
@@ -23,24 +36,38 @@
 
 //  }
 
-// static bool	initialisation_configuration(t_config *config, char **input_table, bool meal_limit)
-// {
-// 	int	try;
+static bool	init_config(t_config *config, char **input_table, bool meal_limit)
+{
+	int	try;
 
-// 	try = 0;
-// 	try += ((config->nb_philosophers = ft_atol(input_table[1])) == IS_OVERFLOW);
-// 	try += ((config->time_to_die = ft_atol(input_table[2])) == IS_OVERFLOW);
-// 	try += ((config->time_to_eat = ft_atol(input_table[3])) == IS_OVERFLOW);
-// 	try += ((config->time_to_sleep = ft_atol(input_table[4])) == IS_OVERFLOW);
-// 	config->nb_times_each_philosopher_must_eat = NO_MEAL_LIMIT;
-// 	if (meal_limit)
-// 		try += (config->nb_times_each_philosopher_must_eat = ft_atol(input_table[5]));
-// 	printf("is_overflow : %i", try);
-// 	return (try == (4 + ));
-// }
+	config = malloc(sizeof(t_config));
+	if (!config)
+		return (false);
+
+	config->nb_philosophers = ft_atoi(input_table[1]);
+	config->time_to_die = ft_atoi(input_table[2]);
+	config->time_to_eat = ft_atoi(input_table[3]);
+	config->time_to_sleep = ft_atoi(input_table[4]);
+
+	try = 0;
+	try += (config->nb_philosophers == IS_OVERFLOW);
+	try += (config->time_to_die == IS_OVERFLOW);
+	try += (config->time_to_eat == IS_OVERFLOW);
+	try += (config->time_to_sleep == IS_OVERFLOW);
+
+	config->meal_limit = NO_MEAL_LIMIT;
+	if (meal_limit)
+	{
+		config->meal_limit = ft_atoi(input_table[5]);
+		try += (config->meal_limit == IS_OVERFLOW);
+	}
+	return (try == 0);
+}
 
 bool	initialisation(t_shared *shared, char **input_table, bool meal_limit)
 {
-	initialisation_configuration(shared->config, input_table, meal_limit);
-	return (SUCCESS);
+
+	init_config(shared->config, input_table, meal_limit);
+
+	return (true);
 }
