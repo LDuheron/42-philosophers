@@ -2,6 +2,4 @@
 /obj
 ./philo
 philo
-/initialisation/
-/logger
-/logger/*
+/initialisation/*
