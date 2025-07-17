@@ -11,13 +11,17 @@
 /* ************************************************************************** */
 
 #include "philosophers.h"
+#include <string.h>
 
 int	main(int argc, char **argv)
 {
+	// t_shared	shared;
+
 	if (!(argc == 5 || argc == 6) || parsing(argc, argv) == false)
 	{
 		log_error(USAGE);
 		return (EXIT_FAILURE);
 	}
+	// initialisation(&shared, argv, (argc == 6));
 	return (EXIT_SUCCESS);
 }

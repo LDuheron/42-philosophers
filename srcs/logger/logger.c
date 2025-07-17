@@ -12,19 +12,43 @@
 
 #include "philosophers.h"
 
-static	void	ft_putstr_fd(char *s, int fd)
+size_t	ft_strlen(const char *str)
 {
-	if (s != NULL)
-		write(fd, s, ft_strlen(s));
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
 
-void	log_error(e_error CODE)
+static	void	ft_putstr_fd(const char *str, int fd)
 {
-	static const char	*message[CODE] = {
-	[USAGE] = "Usage is ./philo number_of_philosophers \
+	if (str != NULL)
+		write(fd, str, ft_strlen(str));
+}
+
+// // Add infos about concerned philospher
+// void	log_action(e_status CODE)
+// {
+// 	static const char	*message[NB_STATE] = {
+// 	[DEAD] = " died\n",
+// 	[EATING] = "  is eating\n",
+// 	[HAS_TAKEN_A_FORK] = " has taken a fork\n",
+// 	[THINKING] = " is thinking\n",
+// 	};
+
+// 	ft_putstr_fd(message[CODE], STD_OUT);
+// }
+
+void	log_error(enum e_error CODE)
+{
+	static const char	*message[NB_ERROR] = {
+	[USAGE] = "Usage is ./philo nb_philosophers \
 		time_to_die time_to_eat time_to_sleep \
-		[number_of_times_each_philosopher_must_eat]\n",
+		[nb_times_each_philosopher_must_eat]\n",
+	[OVERFLOW] = "error: overflow",
 	};
 
-	ft_putstr_fd(message[CODE], stderr);
+	ft_putstr_fd(message[CODE], STD_ERR);
 }

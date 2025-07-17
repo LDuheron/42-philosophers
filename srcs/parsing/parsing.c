@@ -45,4 +45,3 @@ bool	parsing(size_t size_table, char **input_table)
 	}
 	return (resultat == (size_table - 1));
 }
-
