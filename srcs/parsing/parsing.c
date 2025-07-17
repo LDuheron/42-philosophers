@@ -12,30 +12,26 @@
 
 #include "philosophers.h"
 
-static int	is_digit(char input)
+static bool	is_digit(char input)
 {
-	if (input >= '0' && input <= '9')
-		return (SUCCESS);
-	return (FAILURE);
+	return (input >= '0' && input <= '9');
 }
 
-static	int	is_valid_input(char *input_str)
+static	bool	is_valid_input(char *input_str)
 {
 	int	i;
 
 	i = 0;
 	if (!input_str)
-		return (FAILURE);
+		return (false);
 	if (input_str[1] && input_str[0] == '+')
 		i++;
-	while (is_digit(input_str[i]) == SUCCESS)
+	while (is_digit(input_str[i]) == true)
 		i++;
-	if (input_str[i] == '\0')
-		return (SUCCESS);
-	return (FAILURE);
+	return (input_str[i] == '\0');
 }
 
-int	parsing(size_t size_table, char **input_table)
+bool	parsing(size_t size_table, char **input_table)
 {
 	size_t	i;
 	size_t	resultat;
@@ -47,6 +43,6 @@ int	parsing(size_t size_table, char **input_table)
 		resultat += is_valid_input(input_table[i]);
 		i++;
 	}
-	return (resultat == SUCCESS);
+	return (resultat == (size_table - 1));
 }
 

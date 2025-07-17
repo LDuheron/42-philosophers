@@ -8,7 +8,8 @@ SRC_DIR     := srcs
 OBJ_DIR     := obj
 SRCS        := \
 	main.c								\
-	./parsing/parsing.c 							\
+	./logger/logger.c 					\
+	./parsing/parsing.c 				\
 
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

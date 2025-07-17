@@ -3,3 +3,5 @@
 ./philo
 philo
 /initialisation/
+/logger
+/logger/*
