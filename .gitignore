@@ -1,0 +1,5 @@
+*.o
+/obj
+./philo
+philo
+/initialisation
